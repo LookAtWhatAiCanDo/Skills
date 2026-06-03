@@ -5,6 +5,10 @@ description: Use this skill immediately when the user types the slash command '/
 
 # Git Commit Automator
 
+## Strict Git Constraints (MANDATORY)
+- **Do not proactively run any mutating Git commands** (such as `git add`, `git commit`, `git reset`, `git checkout`, or `git push`) unless the user has explicitly and directly instructed you to run that specific command in their prompt.
+- Always explain what changes you intend to stage or commit and let the user review and confirm before you execute any mutating command.
+
 ## Overview
 This skill automates git staging, smart commit message generation based on actual code differences, and committing code changes directly to the active git repository.
 
