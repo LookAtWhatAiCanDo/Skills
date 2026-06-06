@@ -1,13 +1,17 @@
 ---
 name: commit
-description: Use this skill immediately when the user types the slash command '/commit' or '/commit [all|staged]' (defaulting to staged if not specified) in the chat, or explicitly asks the AI to commit their changes.
+description: MANDATORY. You MUST unconditionally load and read this skill file (via view_file) immediately when the user runs '/commit' or '/commit [all|staged]' (defaulting to staged if not specified), or explicitly asks the AI to commit. You must generate both a commit message and a detailed description.
 ---
 
 # Git Commit Automator
 
-## Strict Git Constraints (MANDATORY)
-- **Do not proactively run any mutating Git commands** (such as `git add`, `git commit`, `git reset`, `git checkout`, or `git push`) unless the user has explicitly and directly instructed you to run that specific command in their prompt.
-- Always explain what changes you intend to stage or commit and let the user review and confirm before you execute any mutating command.
+> [!IMPORTANT]
+> **CRITICAL SYSTEM DIRECTIVE (MANDATORY)**:
+> 1. You **MUST** load and read this `SKILL.md` file (using the `view_file` tool) every single time a git commit is requested or the `/commit` command is invoked.
+> 2. You **MUST** run `git diff --cached` to analyze the exact staged changes before generating any commit message.
+> 3. You **MUST** generate **BOTH** a subject line (commit message) **AND** a detailed description (body) outlining the specific changes. Commits with only a subject line are forbidden.
+> 4. You **MUST** execute the commit command as:
+>    `git commit -m "<subject_line>" -m "<detailed_description>"`
 
 ## Overview
 This skill automates git staging, smart commit message generation based on actual code differences, and committing code changes directly to the active git repository.

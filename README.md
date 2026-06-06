@@ -77,7 +77,7 @@ Use this skill immediately when the user types the slash command '/bootstrap-law
 
 ### 4. Git Commit Automator (`/commit`)
 
-Use this skill immediately when the user types the slash command '/commit' or '/commit [all|staged]' (defaulting to staged if not specified) in the chat, or explicitly asks the AI to commit their changes.
+MANDATORY. You MUST unconditionally load and read this skill file (via view_file) immediately when the user runs '/commit' or '/commit [all|staged]' (defaulting to staged if not specified), or explicitly asks the AI to commit. You must generate both a commit message and a detailed description.
 
 * **Path**: `.gemini/antigravity/skills/commit/SKILL.md`
 * **Trigger Command**: `/commit (defaults to committing staged changes)`
